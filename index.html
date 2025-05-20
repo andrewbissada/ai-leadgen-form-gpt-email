@@ -4,12 +4,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>replit</title>
+  <title>Lead Gen Form</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  Hello world!!!
+  <h2>Lead Generation Form</h2>
+  <form id="leadForm">
+    <label for="name">Name:</label><br />
+    <input type="text" id="name" name="name" required /><br /><br />
+
+    <label for="email">Email:</label><br />
+    <input type="email" id="email" name="email" required /><br /><br />
+
+    <label for="business">Business Type:</label><br />
+    <input type="text" id="business" name="business" /><br /><br />
+
+    <label for="service">Service Needed:</label><br />
+    <textarea id="service" name="service" rows="4"></textarea><br /><br />
+
+    <button type="submit">Submit</button>
+  </form>
+
   <script src="script.js"></script>
 </body>
 

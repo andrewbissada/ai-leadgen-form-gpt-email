@@ -24,4 +24,18 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
   const message = data.choices[0].message.content;
 
   alert("Generated email:\n\n" + message);
+
+  // SEND EMAIL via FormSubmit
+  await fetch("https://formsubmit.co/andrew.bissada@gmail.com", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      message: message  // this is the GPT-generated email body
+    })
+  });
+
 });

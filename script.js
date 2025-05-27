@@ -29,7 +29,7 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
   await fetch("https://formsubmit.co/andrew.bissada@gmail.com", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/x-www-form-urlencoded"
     },
     body: JSON.stringify({
       name: name,

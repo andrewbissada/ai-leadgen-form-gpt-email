@@ -8,17 +8,26 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
 
   const prompt = `Write a short, professional response to a potential client named ${name}, from a ${business} business, who needs help with: ${service}`;
 
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+  console.log("About to call OpenAI API");
+
+  const response = await fetch("/api/openai", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer YOUR_API_KEY_HERE"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }]
     })
-  });
+  })
+    .catch(error => {
+      console.error("Fetch failed:", error);
+      return null; // This prevents the undefined error
+    });
+
+  // ADD THIS CHECK HERE (before your existing code)
+  if (!response || !response.ok) {
+    console.error("API call failed");
+    return;
+  }
 
   const data = await response.json();
   const message = data.choices[0].message.content;
